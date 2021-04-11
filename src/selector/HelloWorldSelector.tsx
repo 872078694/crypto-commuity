@@ -1,5 +1,5 @@
 import { atom, selector } from "recoil";
-import { helloWorld } from "../firebase/FirebaseFunction";
+import { helloLeeker } from "../firebase/FirebaseFunction";
 
 // const helloWorldDefaultAtomState = atom({
 //   key: "helloWorldDefaultAtomState",
@@ -9,7 +9,7 @@ import { helloWorld } from "../firebase/FirebaseFunction";
 export const helloWorldSelector = selector({
   key: "helloWorldSelector",
   get: async ({ get }) => {
-    const response = await helloWorld();
+    const response = await helloLeeker();
     console.log("response", response);
     return response.data;
   },
