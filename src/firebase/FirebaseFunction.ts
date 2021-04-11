@@ -4,4 +4,4 @@ export const FirebaseFunction = (name: string) => {
   return Functions().httpsCallable(name);
 };
 
-export const helloWorld = FirebaseFunction('helloWorld');
+export const helloLeeker = FirebaseFunction('helloLeeker');
