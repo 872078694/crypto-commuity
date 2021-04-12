@@ -9,7 +9,7 @@ function App() {
   return (
     <RecoilRoot>
       <BrowserRouter>
-       <Helmet titleTemplate="%s | CryptoCommunity" defaultTitle="CryptoCommunity" />
+       <Helmet titleTemplate="%s | Leeker" defaultTitle="Leeker" />
        <Switch>
            <Route exact path="/" component={HelloWorld} />
            <Route path="/test" component={DemoChart} />
