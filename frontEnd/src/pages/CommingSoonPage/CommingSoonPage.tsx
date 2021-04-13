@@ -134,7 +134,8 @@ function MediaCard() {
 export function CommingSoonPage() {
     const classes = useStyles();
 
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
+    const [textFieldLabel, setTextFieldLabel] = useState('Enter your email here')
     const [isLoading, setIsLoading] = useState(false);
     const [isHasValue, setIsHasValue] = useState(false);
     const setJoinUsEmailAtomState = useSetRecoilState(joinUsEmailAtom);
@@ -142,20 +143,22 @@ export function CommingSoonPage() {
 
     const timer = useRef<number>();
 
-    console.log('isHasValue:  ',isHasValue)
-
     const handleOnClick = () => {
         if(email === ''){
             return;
         }
+        setTextFieldLabel('Enter your email here');
         setIsLoading(true);
-        
         timer.current = window.setTimeout(() => {
             setJoinUsEmailAtomState(email);
             if(joinUsEmailLoadable.state !== 'loading'){
                 setIsLoading(false);
             }
         }, 1200);
+    }
+    function ValidateEmail(email: string): boolean
+    {
+    return (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email));
     }
 
     useEffect(() => {
@@ -208,7 +211,7 @@ export function CommingSoonPage() {
                     </ThemeProvider>
                     {isLoading ? <CircularProgress style={{ height: '5vh', width: '5vh', marginRight: '1vh', marginTop: '20' }} /> :
                         <div>
-                            <TextField id="mui-outlined-basic" label="Enter your email here" variant="outlined"
+                            <TextField id="mui-outlined-basic" label={textFieldLabel} variant="outlined"
                                 className={classes.cssLabel}
                                 InputLabelProps={{
                                     classes: {
@@ -225,7 +228,12 @@ export function CommingSoonPage() {
                                     inputMode: "numeric"
                                 }} style={{ width: "40vh" }}
                                 onChange={(event: React.ChangeEvent<{ value: string }>) => {
-                                    setEmail(event.target.value)
+                                    if(ValidateEmail(event.target.value)){
+                                        setTextFieldLabel('Email is valid');
+                                        setEmail(event.target.value)
+                                    }else{
+                                        setTextFieldLabel('Please type a valid email');
+                                    }
                                 }} />
                             <ThemeProvider theme={buttonTheme}>
                                 <Button variant="outlined" size="large" color="primary" style={{ width: "15vh", height: "5vh", marginLeft: '2vh' }} onClick={handleOnClick} >

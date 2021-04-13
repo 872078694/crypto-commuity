@@ -14,15 +14,11 @@ export const helloLeeker = functions.https.onCall((request, response) => {
   return 'Yo whats up Coin Leekers!'
 });
 
-const isValidEmail = (email: string):boolean => {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return email.match(re)? true : false;
-}
-
 export const storeJoinUsEmail = functions.https.onCall(async (data, _context) => {
-  if(data.email == null || !isValidEmail(data.email)){
-    return "Please send us a valid email"
+  if(data.email == null ){
+    return "Please don't send us an empty email"
   }
+
   let email = (data.email) as string;
   email = email.trim()
   try {
