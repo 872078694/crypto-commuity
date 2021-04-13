@@ -212,7 +212,7 @@ export function CommingSoonPage() {
                         <Typography className={classes.welcomeText} variant="h2">Welcome</Typography>
                         <Typography className={classes.text} variant="h6">leeker.io is a highly user friendly and Decomplicated cryptocurrency news and exchange data collection website. We do our best to lower the threshold for users to understand cryptocurrency. And provide highly user oriented information to improve the transparency and participation of the encrypted currency community.</Typography>
                         <Typography className={classes.text} variant="h6">We sincerely invite friends who are willing to promote cryptocurrency and the defi community to join and write tutorials and experience, We will reward the original tokens to early stage contributors.</Typography>
-                        <Typography className={classes.text} variant="h6">bigsprite872078694@gmail.com</Typography>
+                        <Typography className={classes.text} variant="h6">Join us now and receive our token - we will send our token based on email</Typography>
                     </ThemeProvider>
                     {isLoading ? <CircularProgress style={{ height: '5vh', width: '5vh', marginRight: '1vh', marginTop: '20' }} /> :
                         <div>
