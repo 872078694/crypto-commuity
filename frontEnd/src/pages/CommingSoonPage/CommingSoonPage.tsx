@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import { makeStyles, createStyles, createMuiTheme, Theme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
@@ -147,8 +147,17 @@ export function CommingSoonPage() {
     const setJoinUsEmailAtomState = useSetRecoilState(joinUsEmailAtom);
     const joinUsEmailLoadable = useRecoilValueLoadable(joinUsEmailSelector);
 
+    const timer = useRef<number>();
+
     const handleOnClick = () => {
-        setJoinUsEmailAtomState(email);
+        if(email === ''){
+            return;
+        }
+        setIsLoading(true);
+        timer.current = window.setTimeout(() => {
+            setJoinUsEmailAtomState(email);
+            setEmail('');
+        }, 1200);
     }
 
     useEffect(() => {
@@ -176,6 +185,7 @@ export function CommingSoonPage() {
                 return;
         }
         return ()=>{
+            clearTimeout(timer.current);
             setJoinUsEmailAtomState('');
         }
     }, [joinUsEmailLoadable])
