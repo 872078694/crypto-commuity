@@ -175,6 +175,9 @@ export function CommingSoonPage() {
                 }
                 return;
         }
+        return ()=>{
+            setJoinUsEmailAtomState('');
+        }
     }, [joinUsEmailLoadable])
 
     return (
