@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { HelloWorld } from './components/HelloWorldExample';
 import { DemoChart } from './pages/BarragePage/DemoChart';
 import { CommingSoonPage } from './pages/CommingSoonPage/CommingSoonPage';
+import { PromoVideoPage } from './pages/CommingSoonPage/promoVideoPage';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
        <Switch>
            <Route exact path="/" component={CommingSoonPage} />
            <Route path="/test" component={DemoChart} />
-           <Route path="/register" component={()=><div/>} />
+           <Route path="/promoVideo" component={PromoVideoPage} />
            <Route path="/comingsoon" component={CommingSoonPage} />
         </Switch>
       </BrowserRouter>

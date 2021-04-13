@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import ReactPlayer from 'react-player'
 import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
+import { useHistory } from "react-router-dom";
 import { makeStyles, createStyles, createMuiTheme, Theme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
@@ -130,9 +132,9 @@ function MediaCard() {
     );
 }
 
-
 export function CommingSoonPage() {
     const classes = useStyles();
+    const history = useHistory();
 
     const [email, setEmail] = useState('');
     const [textFieldLabel, setTextFieldLabel] = useState('Enter your email here')
@@ -178,6 +180,7 @@ export function CommingSoonPage() {
 
     return (
         <Box display="flex" justifyContent="flex-start" m={0} p={0} bgcolor="background.paper">
+                
             {isHasValue ? <Collapse in={isHasValue}>
                 <Alert
                     action={
@@ -187,18 +190,20 @@ export function CommingSoonPage() {
                             size="small"
                             onClick={() => {
                                 setIsHasValue(false);
-                                setEmail('')
+                                setEmail('');
+                                history.push('/promovideo')
                             }}
                         >
                             <CloseIcon fontSize="inherit" />
                         </IconButton>
                     }
                     className={classes.alert}
+                    onClick={()=>history.push('/promovideo')}
                 >
                     {joinUsEmailLoadable.contents}
                 </Alert>
             </Collapse> : null}
-            <Box display="flex" alignItems='center' justifyContent="center" m={0} p={0} bgcolor="white" style={{ height: '100vh', width: '100vh' }}>
+            <Box display="flex" alignItems='center' justifyContent="center" m={0} p={0} bgcolor="white" style={{ height: '100vh', width: '100vh' }} onClick={()=>{history.push('/promovideo')}}>
                 <MediaCard />
             </Box>
             <Box display="flex" alignItems='center' justifyContent="center" m={0} p={0} style={{ height: '100vh', width: '100vh', backgroundColor: grey[900] }}>
