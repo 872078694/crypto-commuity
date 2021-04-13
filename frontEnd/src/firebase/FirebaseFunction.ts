@@ -5,3 +5,6 @@ export const FirebaseFunction = (name: string) => {
 };
 
 export const helloLeeker = FirebaseFunction('helloLeeker');
+
+// promo page
+export const storeJoinUsEmail = FirebaseFunction('storeJoinUsEmail');
