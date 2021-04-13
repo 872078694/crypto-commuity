@@ -16,7 +16,7 @@ export const joinUsEmailSelector = selector({
   key: "joinUsEmailSelector",
   get: async ({ get }) => {
     const joinUsEmailAtomState = get(joinUsEmailAtom);
-    const response = await storeJoinUsEmail(joinUsEmailAtomState);
+    const response = await storeJoinUsEmail({email: joinUsEmailAtomState});
     console.log("response", response);
     return response.data;
   },

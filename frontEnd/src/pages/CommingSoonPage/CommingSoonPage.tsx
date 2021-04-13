@@ -1,13 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from 'recoil';
+import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import { makeStyles, createStyles, createMuiTheme, Theme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CloseIcon from '@material-ui/icons/Close';
@@ -15,7 +12,6 @@ import Collapse from '@material-ui/core/Collapse';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import grey from '@material-ui/core/colors/grey';
-import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import whiteBackgroundLogo from '../../LogoImgSrc/logo_white_background.jpg';
 import { joinUsEmailAtom, joinUsEmailSelector } from '../../selector/JoinUsEmailSelector';
 import { IconButton } from '@material-ui/core';
@@ -140,23 +136,22 @@ export function CommingSoonPage() {
 
     const [email, setEmail] = useState('')
     const [isLoading, setIsLoading] = useState(false);
-    const [isHadValue, setIsHasValue] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [open, setOpen] = useState(true);
-    const joinUsEmailAtomValue = useRecoilValue(joinUsEmailAtom)
+    const [isHasValue, setIsHasValue] = useState(false);
     const setJoinUsEmailAtomState = useSetRecoilState(joinUsEmailAtom);
     const joinUsEmailLoadable = useRecoilValueLoadable(joinUsEmailSelector);
 
     const timer = useRef<number>();
+
+    console.log('isHasValue:  ',isHasValue)
 
     const handleOnClick = () => {
         if(email === ''){
             return;
         }
         setIsLoading(true);
+        
         timer.current = window.setTimeout(() => {
             setJoinUsEmailAtomState(email);
-            setEmail('');
             if(joinUsEmailLoadable.state !== 'loading'){
                 setIsLoading(false);
             }
@@ -164,38 +159,23 @@ export function CommingSoonPage() {
     }
 
     useEffect(() => {
-        switch (joinUsEmailLoadable.state) {
-            case 'hasValue':
-                if(joinUsEmailAtomValue !== ''){
-                    setIsHasValue(true);
-                    setIsLoading(false);
-                    setIsError(false);
-                }
-                return;
-            case 'loading':
-                if(joinUsEmailAtomValue !== ''){
-                    setIsHasValue(false);
-                    setIsLoading(true);
-                    setIsError(false);
-                }
-                return;
-            case 'hasError':
-                if(joinUsEmailAtomValue !== ''){
-                    setIsHasValue(false);
-                    setIsLoading(false);
-                    setIsError(true);
-                }
-                return;
+        if(joinUsEmailLoadable.state === 'hasValue' && email !== ''){
+            if(joinUsEmailLoadable.contents === 'You have already joined us, we will contact you shortly. Thank you!' || 
+               joinUsEmailLoadable.contents === 'Thank you for joining us, we will contact you shortly' ||
+               joinUsEmailLoadable.contents === 'Please send us a valid email'
+            ){
+                setIsHasValue(true)
+            }
         }
         return ()=>{
             clearTimeout(timer.current);
             setJoinUsEmailAtomState('');
         }
-    }, [joinUsEmailLoadable])
+    }, [joinUsEmailLoadable,isHasValue])
 
     return (
         <Box display="flex" justifyContent="flex-start" m={0} p={0} bgcolor="background.paper">
-            {isHadValue ? <Collapse in={open}>
+            {isHasValue ? <Collapse in={isHasValue}>
                 <Alert
                     action={
                         <IconButton
@@ -203,7 +183,8 @@ export function CommingSoonPage() {
                             color="inherit"
                             size="small"
                             onClick={() => {
-                                setOpen(false);
+                                setIsHasValue(false);
+                                setEmail('')
                             }}
                         >
                             <CloseIcon fontSize="inherit" />
@@ -211,7 +192,7 @@ export function CommingSoonPage() {
                     }
                     className={classes.alert}
                 >
-                    Thank you! We will contact you shortly!
+                    {joinUsEmailLoadable.contents}
                 </Alert>
             </Collapse> : null}
             <Box display="flex" alignItems='center' justifyContent="center" m={0} p={0} bgcolor="white" style={{ height: '100vh', width: '100vh' }}>
@@ -221,8 +202,8 @@ export function CommingSoonPage() {
                 <Box p={1} bgcolor={grey[900]} style={{ height: '60vh', width: '60vh' }}>
                     <ThemeProvider theme={theme}>
                         <Typography className={classes.welcomeText} variant="h2">Welcome</Typography>
-                        <Typography className={classes.text} variant="h6">leeker.io is a highly user friendly and Decomplicated cryptocurrency news and exchange data collection website. We do our best to lower the threshold for users to understand cryptocurrency. And provide highly user oriented information to improve the transparency and participation of the encrypted currency index.</Typography>
-                        <Typography className={classes.text} variant="h6">We sincerely invite friends who are willing to promote cryptocurrency and the defi community to join and write tutorials and experience, We will reward the original tokens to early contributors</Typography>
+                        <Typography className={classes.text} variant="h6">leeker.io is a highly user friendly and Decomplicated cryptocurrency news and exchange data collection website. We do our best to lower the threshold for users to understand cryptocurrency. And provide highly user oriented information to improve the transparency and participation of the encrypted currency community.</Typography>
+                        <Typography className={classes.text} variant="h6">We sincerely invite friends who are willing to promote cryptocurrency and the defi community to join and write tutorials and experience, We will reward the original tokens to early stage contributors.</Typography>
                         <Typography className={classes.text} variant="h6">bigsprite872078694@gmail.com</Typography>
                     </ThemeProvider>
                     {isLoading ? <CircularProgress style={{ height: '5vh', width: '5vh', marginRight: '1vh', marginTop: '20' }} /> :

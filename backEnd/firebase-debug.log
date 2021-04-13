@@ -1,0 +1,100 @@
+[debug] [2021-04-13T19:03:00.297Z] ----------------------------------------------------------------------
+[debug] [2021-04-13T19:03:00.300Z] Command:       /usr/local/bin/node /Users/chensijian/.config/yarn/global/node_modules/.bin/firebase deploy --only functions:storeJoinUsEmail
+[debug] [2021-04-13T19:03:00.300Z] CLI Version:   9.2.2
+[debug] [2021-04-13T19:03:00.300Z] Platform:      darwin
+[debug] [2021-04-13T19:03:00.300Z] Node Version:  v12.18.3
+[debug] [2021-04-13T19:03:00.301Z] Time:          Tue Apr 13 2021 14:03:00 GMT-0500 (GMT-05:00)
+[debug] [2021-04-13T19:03:00.301Z] ----------------------------------------------------------------------
+[debug] [2021-04-13T19:03:00.301Z] 
+[debug] [2021-04-13T19:03:00.307Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-13T19:03:00.308Z] > authorizing via signed-in user
+[debug] [2021-04-13T19:03:00.308Z] [iam] checking project crypto-community-dd889 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2021-04-13T19:03:00.310Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/crypto-community-dd889:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2021-04-13T19:03:00.493Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=86","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T19:03:00.494Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/crypto-community-dd889/serviceAccounts/crypto-community-dd889@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-04-13T19:03:00.706Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'crypto-community-dd889'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2021-04-13T19:03:05.887Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@types/highcharts": "^7.0.0",
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.11.0",
+    "highcharts": "^9.0.1",
+    "highcharts-react-official": "^3.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^3.8.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2021-04-13T19:03:06.551Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/crypto-community-dd889/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2021-04-13T19:03:06.552Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/crypto-community-dd889/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2021-04-13T19:03:06.552Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/crypto-community-dd889/services/cloudbuild.googleapis.com  
+ 
+[debug] [2021-04-13T19:03:07.409Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2021-04-13T19:03:07.427Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2021-04-13T19:03:07.441Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T19:03:07.441Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/crypto-community-dd889/adminSdkConfig  
+ 
+[debug] [2021-04-13T19:03:07.717Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: preparing functions directory for uploading... 
+[debug] [2021-04-13T19:03:07.719Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/crypto-community-dd889/configs  
+ 
+[debug] [2021-04-13T19:03:08.337Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:08 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: packaged functions (50.36 KB) for uploading 
+[debug] [2021-04-13T19:03:08.603Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/crypto-community-dd889/locations/-/functions  
+ 
+[debug] [2021-04-13T19:03:09.179Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:09 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T19:03:09.182Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/crypto-community-dd889/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2021-04-13T19:03:09.874Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:09 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T19:03:09.875Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-9272ea5f-cd79-411b-99f9-20dd94336dfa/1aa1cdb9-7679-464e-8a20-c2e985852634.zip?GoogleAccessId=service-504992122455@gcf-admin-robot.iam.gserviceaccount.com&Expires=1618342389&Signature=QpiFyNBzz1qWNobL3fSVOkv3ptzZsj6r4%2BMjcQKaapxofseTq35c2m12nma2KB%2F6mh%2FEd8ilFoBHBmCkKpJg5Go40EaOF6JLoVFiJJaEi4%2FEQ3uZzVARuY4oUmj7dST2%2BUTw%2F%2BEytWARLRFkWel5cNgfzp7xG5Zvz0AvQsLyINEwmR8lyyOErloca%2FNc9s3NE4nwqkMZ9jSs23lPYhPvEq9pQHRqSpFrgVxV49NlsY89GyHKRcCRqzCSf4prCdvW5J%2BRhgaWgwEC7kURtmdezZR6bnFtLEUfxvyIdip2TmfyKC%2FBWt5UhChihjkeE%2FQbvccEas9%2BKk9s0lM%2BbY92Ww%3D%3D  
+ <request body omitted>
+[debug] [2021-04-13T19:03:10.111Z] <<< HTTP RESPONSE 200 {"x-guploader-uploadid":"ABg5-UwK1v12kJOjZE9umXKG-JIot8TCLZ9eTY69UF7I4sN-Z0I3Y57TCY3o81oghZT951l9MwCOWB6wmJeovCLYV7uJtjh89g","etag":"\"f9127b89f040d05312247abe0b53df0e\"","x-goog-generation":"1618340590189026","x-goog-metageneration":"1","x-goog-hash":"crc32c=3+xu9A==, md5=+RJ7ifBA0FMSJHq+C1PfDg==","x-goog-stored-content-length":"51566","x-goog-stored-content-encoding":"identity","vary":"Origin","content-length":"0","date":"Tue, 13 Apr 2021 19:03:10 GMT","server":"UploadServer","content-type":"text/html; charset=UTF-8","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""}
+[info] ✔  functions: functions folder uploaded successfully 
+[debug] [2021-04-13T19:03:10.113Z] > [functions] filtering triggers to: [
+  "projects/crypto-community-dd889/locations/us-central1/functions/storeJoinUsEmail"
+]
+[info] i  functions: current functions in project: helloLeeker(us-central1), storeJoinUsEmail(us-central1) 
+[info] i  functions: uploading functions in project: storeJoinUsEmail(us-central1) 
+[info] i  functions: updating Node.js 12 function storeJoinUsEmail(us-central1)... 
+[debug] [2021-04-13T19:03:10.116Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2021-04-13T19:03:10.118Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/crypto-community-dd889/locations/us-central1/functions/storeJoinUsEmail {"updateMask":"sourceUploadUrl,name,labels,runtime,environmentVariables,httpsTrigger"} 
+ {"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-9272ea5f-cd79-411b-99f9-20dd94336dfa/1aa1cdb9-7679-464e-8a20-c2e985852634.zip?GoogleAccessId=service-504992122455@gcf-admin-robot.iam.gserviceaccount.com&Expires=1618342389&Signature=QpiFyNBzz1qWNobL3fSVOkv3ptzZsj6r4%2BMjcQKaapxofseTq35c2m12nma2KB%2F6mh%2FEd8ilFoBHBmCkKpJg5Go40EaOF6JLoVFiJJaEi4%2FEQ3uZzVARuY4oUmj7dST2%2BUTw%2F%2BEytWARLRFkWel5cNgfzp7xG5Zvz0AvQsLyINEwmR8lyyOErloca%2FNc9s3NE4nwqkMZ9jSs23lPYhPvEq9pQHRqSpFrgVxV49NlsY89GyHKRcCRqzCSf4prCdvW5J%2BRhgaWgwEC7kURtmdezZR6bnFtLEUfxvyIdip2TmfyKC%2FBWt5UhChihjkeE%2FQbvccEas9%2BKk9s0lM%2BbY92Ww%3D%3D","name":"projects/crypto-community-dd889/locations/us-central1/functions/storeJoinUsEmail","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true"},"httpsTrigger":{},"runtime":"nodejs12","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"crypto-community-dd889\",\"databaseURL\":\"https://crypto-community-dd889-default-rtdb.firebaseio.com\",\"storageBucket\":\"crypto-community-dd889.appspot.com\",\"locationId\":\"us-central\"}"}}
+[debug] [2021-04-13T19:03:10.694Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T19:03:10.695Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/crypto-community-dd889/locations/-/functions  
+ 
+[debug] [2021-04-13T19:03:11.304Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T19:03:11.306Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/Y3J5cHRvLWNvbW11bml0eS1kZDg4OS91cy1jZW50cmFsMS9zdG9yZUpvaW5Vc0VtYWlsL1dZUy1YZU9ET1Uw  
+ 
+[debug] [2021-04-13T19:03:11.564Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T19:03:13.568Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/Y3J5cHRvLWNvbW11bml0eS1kZDg4OS91cy1jZW50cmFsMS9zdG9yZUpvaW5Vc0VtYWlsL1dZUy1YZU9ET1Uw  
+ 
+[debug] [2021-04-13T19:03:13.814Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 19:03:13 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
