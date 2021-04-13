@@ -157,6 +157,9 @@ export function CommingSoonPage() {
         timer.current = window.setTimeout(() => {
             setJoinUsEmailAtomState(email);
             setEmail('');
+            if(joinUsEmailLoadable.state !== 'loading'){
+                setIsLoading(false);
+            }
         }, 1200);
     }
 
