@@ -4,6 +4,7 @@ import { RecoilRoot } from 'recoil';
 import { Helmet } from 'react-helmet';
 import { HelloWorld } from './components/HelloWorldExample';
 import { DemoChart } from './pages/BarragePage/DemoChart';
+import { CommingSoonPage } from './pages/CommingSoonPage/CommingSoonPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
            <Route exact path="/" component={HelloWorld} />
            <Route path="/test" component={DemoChart} />
            <Route path="/register" component={()=><div/>} />
+           <Route path="/comingsoon" component={CommingSoonPage} />
         </Switch>
       </BrowserRouter>
     </RecoilRoot>
