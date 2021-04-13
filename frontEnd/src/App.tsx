@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
        <Helmet titleTemplate="%s | Leeker" defaultTitle="Leeker" />
        <Switch>
-           <Route exact path="/" component={HelloWorld} />
+           <Route exact path="/" component={CommingSoonPage} />
            <Route path="/test" component={DemoChart} />
            <Route path="/register" component={()=><div/>} />
            <Route path="/comingsoon" component={CommingSoonPage} />
